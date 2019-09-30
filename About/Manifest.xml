@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Manifest>
+    <identifier>Toolkit - ChannelPoints</identifier>
+    <version>1.0.0</version>
+    <dependencies>
+        <li>TwitchToolkit</li>
+    </dependencies>
+    <showCrossPromotions>true</showCrossPromotions>
+    <manifestUri>https://raw.githubusercontent.com/swemoney/Toolkit---ChannelPoints/master/About/Manifest.xml</manifestUri>
+    <downloadUri>https://github.com/swemoney/Toolkit---ChannelPoints/releases/latest</downloadUri>
+</Manifest>

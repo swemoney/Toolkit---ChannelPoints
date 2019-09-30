@@ -1,0 +1,5 @@
+D:\Dev\RimWorld\Toolkit---ChannelPoints\Assemblies\Toolkit - ChannelPoints.dll
+D:\Dev\RimWorld\Toolkit---ChannelPoints\Assemblies\Toolkit - ChannelPoints.pdb
+D:\Dev\RimWorld\Toolkit---ChannelPoints\Source\obj\Release\Toolkit - ChannelPoints.csproj.CoreCompileInputs.cache
+D:\Dev\RimWorld\Toolkit---ChannelPoints\Source\obj\Release\Toolkit - ChannelPoints.dll
+D:\Dev\RimWorld\Toolkit---ChannelPoints\Source\obj\Release\Toolkit - ChannelPoints.pdb

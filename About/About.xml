@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ModMetaData>
+  <name>Toolkit - Channel Points</name>
+  <author>swemoney</author>
+  <url>https://github.com/swemoney/Toolkit---ChannelPoints</url>
+  <supportedVersions>
+    <li>1.0</li>
+  </supportedVersions>
+  <description>Exchange Twitch Channel Points for bonus Toolkit coins with a custom reward.
+  
+Setup Instructions:
+
+  1. Create a custom reward in your Channel Points, 
+     Manage Rewards dashboard.
+      - Set the cost and title to whatever you'd like!
+      - You probably want to include how many Toolkit coins
+        your reward gives your viewer.
+      - Enable "Require Viewer to Enter Text"!
+        !! THIS IS REQUIRED !!
+
+  2. In RimWorld, go to Mod Settings and find Twitch 
+     Toolkit - Channel Points.
+      - Enable the "Automatic Reward UUID Capture".
+      - Set the amount of coins your reward will give as
+        specified in your reward setup.
+      - Setup the name of your Channel Points if you
+        named them something fancier than Channel Points.
+
+  3. Load any game so the Toolkit bot joins your channel.
+      - Make a purchase of the custom reward you created 
+        so the bot can capture the reward UUID.
+
+  4. Profit.
+      - That should be it! You'll notice in the mod settings 
+        that the UUID has been filled in for you. If you 
+        ever need to update this, just enable Automatic 
+        Reward UUID Capture again or paste in the UUID if you 
+        know it.
+  </description>
+</ModMetaData>
