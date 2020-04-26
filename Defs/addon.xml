@@ -1,0 +1,7 @@
+<Defs>
+  <ToolkitCore.Models.ToolkitAddon>
+    <defName>ToolkitChannelPoints</defName>
+    <label>Toolkit Channel Points</label>
+    <menuClass>Toolkit___ChannelPoints.AddonMenu</menuClass>
+  </ToolkitCore.Models.ToolkitAddon>
+</Defs>

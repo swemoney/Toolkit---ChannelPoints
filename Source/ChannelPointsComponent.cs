@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using TwitchLib.Client.Models;
+using TwitchLib.Client.Models.Interfaces;
+using ToolkitCore;
 using TwitchToolkit;
-using TwitchToolkit.IRC;
 using TwitchToolkit.Store;
 using Verse;
 
@@ -15,14 +17,19 @@ namespace Toolkit___ChannelPoints
     {
         public ChannelPointsComponent(Game game) { }
 
-        public override void ParseCommand(IRCMessage msg)
+        public override void ParseMessage(ITwitchMessage msg)
         {
-            if (msg.Parameters.ContainsKey("custom-reward-id"))
+            if (msg.ChatMessage == null)
             {
-                string rewardId = msg.Parameters["custom-reward-id"];
+                return;
+            }
+
+            if (msg.ChatMessage.CustomRewardId != null)
+            {
+                string rewardId = msg.ChatMessage.CustomRewardId;
                 if (rewardId == ChannelPoints_Settings.RewardUUID)
                 {
-                    ChannelPoints.AwardCoinsToUser(msg.User);
+                    ChannelPoints.AwardCoinsToUser(msg.Username);
                 }
                 else
                 {
@@ -35,7 +42,7 @@ namespace Toolkit___ChannelPoints
                     {
                         if (ChannelPoints_Settings.ShowDebugMessages)
                         {
-                            Log.Message($"Automatic reward UUID capture is enabled. Configuring to capture {rewardId} in the future.");
+                            Log.Message($"Automatic reward UUID capture is enabled. Configuring to use {rewardId} in the future.");
                         }
 
                         ChannelPoints_Settings.AutomaticRewardUUIDCapture = false;

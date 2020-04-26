@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TwitchToolkit;
+using ToolkitCore;
 using Verse;
 
 namespace Toolkit___ChannelPoints
@@ -23,7 +24,8 @@ namespace Toolkit___ChannelPoints
                 Log.Message($"{username} redeemed their {pointsName} for {coinsToAward} Toolkit coins");
             }
 
-            Toolkit.client.SendMessage(message, true);
+            
+            ToolkitCore.TwitchWrapper.SendChatMessage(message);
         }
     }
 }
