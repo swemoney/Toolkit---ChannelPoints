@@ -11,56 +11,105 @@ namespace Toolkit___ChannelPoints
 {
     public class ChannelPoints_Settings : ModSettings
     {
-        public static int CoinsToAward = 300;
-        public static string RewardUUID = "";
+        public static List<ChannelPoints_RewardSettings> RewardSettings;
         public static string ChannelPointsName = "Channel Points";
-        public static bool AutomaticRewardUUIDCapture = false;
         public static bool ShowDebugMessages = false;
 
         public void DoWindowContents(Rect inRect)
         {
+            if (RewardSettings == null)
+            {
+                RewardSettings = new List<ChannelPoints_RewardSettings>();
+            }
+
+            if (RewardSettings.Count < 1)
+            {
+                RewardSettings.Add(new ChannelPoints_RewardSettings());
+            }
+
+            // Define our starting positions
+            float x = 10f;
+            float y = 20f;
+            float w = inRect.width - 20f;
+            float lineHeight = 40f;
+            float iconWidth = 20f;
+
+            // Start the listing_standard
             Listing_Standard ls = new Listing_Standard();
             ls.Begin(inRect);
 
-            string CoinsToAwardStr = CoinsToAward.ToString();
-            ls.Label("Important Note: There is no official API from Twitch for redeeming Channel Points. For that reason, this mod will rely on chat to determine when someone redeems their points for your reward. YOU NEED TO SET YOUR REWARD TO REQUIRE A MESSAGE or the chat bot will never see it. I'm also sure that there may be hiccups that cause the bot to miss a redemption as well. You'll need to verify and award coins manually in these cases.");
-            ls.Gap();
-            ls.Gap();
+            // Information label
+            Rect infoRect = ls.Label("Important Note: This mod uses the built in chat bot from ToolkitCore to see if a Channel Points reward was redeemed. For that reason, YOU NEED TO SET YOUR REWARD ON TWITCH TO REQUIRE A MESSAGE or the chat bot will never see it. The user's Channel Points will be deducted immediately so if the chat bot doesn't pick up the redemption, you'll need to manually award Toolkit Coins to the user.");
+            y += infoRect.height;
 
-            ls.Label("How many Twitch Toolkit coins should be given when this is purchased?");
-            ls.TextFieldNumeric(ref CoinsToAward, ref CoinsToAwardStr);
-            ls.Gap();
-            ls.Gap();
+            // Reward Field Widths
+            float nameWidth = w / 3;
+            float uuidWidth = w / 3;
+            float coinWidth = (w / 3) / 4;
+            float autoWidth = (w / 3) / 4;
+            float enableWidth = (w / 3) / 4;
+            float deleteWidth = (w / 3) / 4;
 
-            ls.Label("To make sure we are only finding the reward you set up, we'll match the UUID for the reward before handing out Toolkit coins.");
-            ls.Gap();
+            // Rewards table labels
+            Rect rowRect = ls.GetRect(GenUI.ListSpacing);
+            WidgetRow labelsRow = new WidgetRow(rowRect.x, rowRect.y, UIDirection.RightThenDown);
+            labelsRow.Label("Name", nameWidth);
+            labelsRow.Label("UUID", uuidWidth);
+            labelsRow.Label("Amount", coinWidth);
+            labelsRow.Label("Auto", autoWidth);
+            labelsRow.Label("Enable", enableWidth);
+            labelsRow.Label("Delete", deleteWidth);
+            y += lineHeight;
 
-            ls.Label("If you already know the UUID, just paste it here. If not, enable automatic UUID capture below and purchase the reward. We'll capture the first reward UUID that comes through and use that one from now on. You'll need to be loaded into a game with Twitch Toolkit connected to your chat for this to work.");
-            RewardUUID = ls.TextEntry(RewardUUID);
-            ls.Gap();
+            // Icons for reward options
+            Texture2D autoIcon = ContentFinder<Texture2D>.Get("ui/commands/CopySettings");
+            Texture2D enabledIcon = ContentFinder<Texture2D>.Get("ui/commands/DesirePower");
+            Texture2D deleteIcon = ContentFinder<Texture2D>.Get("ui/buttons/Delete");
 
-            ls.CheckboxLabeled("Automatic Reward UUID Capture", ref AutomaticRewardUUIDCapture);
-            ls.Gap();
-            ls.Gap();
+            for (int i = 0; i < RewardSettings.Count; i++)
+            {
+                ChannelPoints_RewardSettings reward = RewardSettings[i];
+                WidgetRow rewardRow = new WidgetRow(rowRect.x, y, UIDirection.RightThenDown);
 
-            ls.Label("While Twitch calls them Channel Points, they allow you to define a custom name for your Channel Points. You can set that here so things don't feel so generic.");
-            ChannelPointsName = ls.TextEntry(ChannelPointsName);
-            ls.Gap();
-            ls.Gap();
-            ls.Gap();
-            ls.Gap();
+                Rect nameRect = rewardRow.Label("", nameWidth);
+                Rect uuidRect = rewardRow.Label("", uuidWidth);
+                Rect coinRect = rewardRow.Label("", coinWidth);
 
-            ls.CheckboxLabeled("Show Debug Messages", ref ShowDebugMessages);
+                rewardRow.Gap(4);
+                rewardRow.ToggleableIcon(ref reward.AutomaticallyCaptureUUID, autoIcon, "Automatically Capture UUID?\n(Only works for one reward at a time)");
+                rewardRow.Gap(autoWidth - iconWidth);
+                rewardRow.ToggleableIcon(ref reward.Enabled, enabledIcon, "Reward Enabled?");
+                rewardRow.Gap(enableWidth - iconWidth);
+                if (rewardRow.ButtonIcon(deleteIcon, "Delete Reward?"))
+                    RewardSettings.RemoveAt(i--);
+
+                reward.RewardName = Widgets.TextField(nameRect, reward.RewardName);
+                reward.RewardUUID = Widgets.TextField(uuidRect, reward.RewardUUID);
+                reward.CoinsToAward = Widgets.TextField(coinRect, reward.CoinsToAward);
+                y += lineHeight;
+            }
+
+            if (Widgets.ButtonText(new Rect(w - 100, y, 100, lineHeight), "Add Reward"))
+            {
+                RewardSettings.Add(new ChannelPoints_RewardSettings());
+            }
+            y += lineHeight * 2;
+
+            Widgets.Label(new Rect(x, y, w, 25f), "What do you call your Channel Points?");
+            y += 25f;
+
+            ChannelPointsName = Widgets.TextField(new Rect(x, y, w, 25f), ChannelPointsName);
+            y += lineHeight;
+
+            Widgets.CheckboxLabeled(new Rect(x, y, w, lineHeight), "Show Debug Messages: ", ref ShowDebugMessages);
 
             ls.End();
         }
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref CoinsToAward, "CoinsToAward", 300);
-            Scribe_Values.Look(ref RewardUUID, "RewardUUID", "");
+            Scribe_Collections.Look(ref RewardSettings, "RewardSettings", LookMode.Deep);
             Scribe_Values.Look(ref ChannelPointsName, "ChannelPointsName", "Channel Points");
-            Scribe_Values.Look(ref AutomaticRewardUUIDCapture, "AutomaticRewardUUIDCapture", false);
             Scribe_Values.Look(ref ShowDebugMessages, "ShowDebugMessages", false);
         }
     }

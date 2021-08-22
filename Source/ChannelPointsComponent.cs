@@ -27,9 +27,11 @@ namespace Toolkit___ChannelPoints
             if (msg.ChatMessage.CustomRewardId != null)
             {
                 string rewardId = msg.ChatMessage.CustomRewardId;
-                if (rewardId == ChannelPoints_Settings.RewardUUID)
+                ChannelPoints_RewardSettings reward = ChannelPoints_Settings.RewardSettings.FirstOrDefault(r => r.RewardUUID == rewardId);
+
+                if (reward != null)
                 {
-                    ChannelPoints.AwardCoinsToUser(msg.Username);
+                    ChannelPoints.AwardCoinsToUser(msg.Username, reward.CoinsToAward);
                 }
                 else
                 {
@@ -38,15 +40,16 @@ namespace Toolkit___ChannelPoints
                         Log.Message($"Detected a custom reward that wasn't configured: {rewardId}");
                     }
 
-                    if (ChannelPoints_Settings.AutomaticRewardUUIDCapture)
+                    ChannelPoints_RewardSettings autoReward = ChannelPoints_Settings.RewardSettings.FirstOrDefault(r => r.AutomaticallyCaptureUUID == true);
+                    if (autoReward != null)
                     {
                         if (ChannelPoints_Settings.ShowDebugMessages)
                         {
-                            Log.Message($"Automatic reward UUID capture is enabled. Configuring to use {rewardId} in the future.");
+                            Log.Message($"A reward with Automatic UUID capture enabled was found. Configuring this reward to use {rewardId}.");
                         }
 
-                        ChannelPoints_Settings.AutomaticRewardUUIDCapture = false;
-                        ChannelPoints_Settings.RewardUUID = rewardId;
+                        autoReward.AutomaticallyCaptureUUID = false;
+                        autoReward.RewardUUID = rewardId;
                     }
                     else
                     {

@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
+    <OutputPath>C:\Program Files %28x86%29\Steam\steamapps\common\RimWorld\Mods\Toolkit---ChannelPoints\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,20 +34,34 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.1.2610" />
-    <PackageReference Include="HodlHodl.Rimworld.Toolkit.Core" Version="1.1.1" ExcludeAssets="runtime" />
-    <Reference Include="TwitchToolkit">
-      <HintPath>..\..\Deps\1.1\TwitchToolkit.dll</HintPath>
-      <Private>False</Private>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3087" />
+    <Reference Include="ToolkitCore">
+      <HintPath>..\..\Deps\1.3\ToolkitCore.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Client">
+      <HintPath>..\..\Deps\1.3\TwitchLib.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Client.Enums">
+      <HintPath>..\..\Deps\1.3\TwitchLib.Client.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Client.Models">
+      <HintPath>..\..\Deps\1.3\TwitchLib.Client.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.Communication">
+      <HintPath>..\..\Deps\1.3\TwitchLib.Communication.dll</HintPath>
     </Reference>
     <None Include="..\About\*" Link="..\About\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="Never" />
     <None Include="..\README.md" Link="..\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="Never" />
     <None Include="..\LICENSE" Link="..\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="Never" />
+    <Reference Include="TwitchToolkit">
+      <HintPath>..\..\Deps\1.3\TwitchToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddonMenu.cs" />
     <Compile Include="ChannelPoints.cs" />
     <Compile Include="ChannelPointsComponent.cs" />
+    <Compile Include="ChannelPoints_RewardSettings.cs" />
     <Compile Include="ChannelPoints_Settings.cs" />
     <Compile Include="ToolkitChannelPoints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
