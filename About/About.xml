@@ -38,6 +38,13 @@ Setup Instructions:
         ever need to update this, just enable Automatic 
         Reward UUID Capture again or paste in the UUID if you 
         know it.
+
+  ** With the 1.3 Update you can now add multiple rewards!
+     Give your viewers a bulk channel points redeem or just
+     give them multiple options!
+
+  ** Enable cooldowns within the Twitch Dashboard for each
+     reward. You can enable global or per-user cooldowns.
   </description>
   <modDependencies>
     <li>
