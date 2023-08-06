@@ -27,4 +27,6 @@ Use Twitch's official Channel Points to offer your viewers a custom reward that 
 * Cooldowns can be enabled in the Twitch Dashboard if you'd like to limit how often channel points can be redeemed on a global or per-user basis.
 
 ## Compatibility
+* FOR RIMWORLD 1.4 YOU WILL NEED THE TOOLKIT VERSION AVAILABLE ON [GITHUB](https://github.com/harleyknd1/twitchtoolkit/releases) AND NOT THE WORKSHOP. 
+
 Should have no issue adding and removing this mod. No known conflicts with other mods. Just make sure this appears after TwitchToolkit in your mod order.

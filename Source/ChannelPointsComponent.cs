@@ -37,7 +37,7 @@ namespace Toolkit___ChannelPoints
                 {
                     if (ChannelPoints_Settings.ShowDebugMessages)
                     {
-                        Log.Message($"Detected a custom reward that wasn't configured: {rewardId}");
+                        Log.Message($"<color=#6441A4>[Toolkit - ChannelPoints]</color> Detected a custom reward that wasn't configured: {rewardId}");
                     }
 
                     ChannelPoints_RewardSettings autoReward = ChannelPoints_Settings.RewardSettings.FirstOrDefault(r => r.AutomaticallyCaptureUUID == true);
@@ -45,7 +45,7 @@ namespace Toolkit___ChannelPoints
                     {
                         if (ChannelPoints_Settings.ShowDebugMessages)
                         {
-                            Log.Message($"A reward with Automatic UUID capture enabled was found. Configuring this reward to use {rewardId}.");
+                            Log.Message($"<color=#6441A4>[Toolkit - ChannelPoints]</color> A reward with Automatic UUID capture enabled was found. Configuring this reward to use {rewardId}.");
                         }
 
                         autoReward.AutomaticallyCaptureUUID = false;
@@ -55,7 +55,7 @@ namespace Toolkit___ChannelPoints
                     {
                         if (ChannelPoints_Settings.ShowDebugMessages)
                         {
-                            Log.Message("If this is the reward you would like to use, add this UUID to the mod settings.");
+                            Log.Message("<color=#6441A4>[Toolkit - ChannelPoints]</color> If this is the reward you would like to use, add this UUID to the mod settings.");
                         }
                     }
                 }

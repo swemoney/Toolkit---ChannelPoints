@@ -20,7 +20,7 @@ namespace Toolkit___ChannelPoints
 
             if (ChannelPoints_Settings.ShowDebugMessages)
             {
-                Log.Message($"{username} redeemed their {pointsName} for {coinsToAward} Toolkit coins");
+                Log.Message($"<color=#6441A4>[Toolkit - ChannelPoints]</color> {username} redeemed their {pointsName} for {coinsToAward} Toolkit coins");
             }
 
             ToolkitCore.TwitchWrapper.SendChatMessage(message);
