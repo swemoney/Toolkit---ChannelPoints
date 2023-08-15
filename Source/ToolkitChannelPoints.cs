@@ -12,7 +12,7 @@ namespace Toolkit___ChannelPoints
     {
         public ToolkitChannelPoints(ModContentPack content) : base(content)
         {
-            Log.Warning("<color=#6441A4>[Toolkit - ChannelPoints]</color> Loading Channel Points Mod");
+            Helper.LogMessage("Loading Channel Points Mod");
             GetSettings<ChannelPoints_Settings>();
             Settings_ToolkitExtensions.RegisterExtension(new ToolkitExtension(this, typeof(ChannelPointsPatchSettings)));
         }

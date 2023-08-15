@@ -14,8 +14,6 @@
 
     Setup Instructions:
 
-    ** FOR 1.4 SUPPORT YOU WILL NEED THE VERSION OF TOOLKIT FROM GITHUB (https://github.com/harleyknd1/twitchtoolkit/releases)
-
     1. Create a custom reward in your Channel Points,
     Manage Rewards dashboard.
     - Set the cost and title to whatever you'd like!
@@ -52,9 +50,9 @@
   </description>
   <modDependencies>
     <li>
-      <packageId>hodlhodl.twitchtoolkit</packageId>
+      <packageId>nry.twitchtoolkit</packageId>
       <displayName>Twitch Toolkit</displayName>
-      <steamWorkshopUrl>steam://url/CommunityFilePage/1718525787</steamWorkshopUrl>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3013874066</steamWorkshopUrl>
     </li>
   </modDependencies>
 </ModMetaData>

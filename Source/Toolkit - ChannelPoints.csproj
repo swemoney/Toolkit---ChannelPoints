@@ -37,24 +37,29 @@
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704" />
     <Reference Include="ToolkitCore">
       <HintPath>..\..\Deps\1.4\ToolkitCore.dll</HintPath>
-    </Reference>
-    <Reference Include="TwitchLib.Client">
-      <HintPath>..\..\Deps\1.4\TwitchLib.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="TwitchLib.Client.Enums">
-      <HintPath>..\..\Deps\1.4\TwitchLib.Client.Enums.dll</HintPath>
-    </Reference>
-    <Reference Include="TwitchLib.Client.Models">
-      <HintPath>..\..\Deps\1.4\TwitchLib.Client.Models.dll</HintPath>
-    </Reference>
-    <Reference Include="TwitchLib.Communication">
-      <HintPath>..\..\Deps\1.4\TwitchLib.Communication.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <None Include="..\About\*" Link="..\About\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="Never" />
     <None Include="..\README.md" Link="..\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="Never" />
     <None Include="..\LICENSE" Link="..\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="Never" />
+    <Reference Include="TwitchLib.Client, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Deps\1.4\TwitchLib.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TwitchLib.Client.Enums, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Deps\1.4\TwitchLib.Client.Enums.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TwitchLib.Client.Models, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Deps\1.4\TwitchLib.Client.Models.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="TwitchToolkit">
       <HintPath>..\..\Deps\1.4\TwitchToolkit.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +68,7 @@
     <Compile Include="ChannelPointsComponent.cs" />
     <Compile Include="ChannelPoints_RewardSettings.cs" />
     <Compile Include="ChannelPoints_Settings.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="ToolkitChannelPoints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
