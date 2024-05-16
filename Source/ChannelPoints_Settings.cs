@@ -108,6 +108,7 @@ namespace Toolkit___ChannelPoints
 
         public override void ExposeData()
         {
+            base.ExposeData();
             Scribe_Collections.Look(ref RewardSettings, "RewardSettings", LookMode.Deep);
             Scribe_Values.Look(ref ChannelPointsName, "ChannelPointsName", "Channel Points");
             Scribe_Values.Look(ref ShowDebugMessages, "ShowDebugMessages", false);
